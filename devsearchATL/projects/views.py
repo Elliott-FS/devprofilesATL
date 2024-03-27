@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def projects(request):
-    return HttpResponse('Here are our projects')
+    page = 'projects'
+    number = 10
+    context = {'page': page, 'number': number}
+    return render(request, 'devsearchProjects/projects.html', context)
 
 def project(request, pk):
-    return HttpResponse('Here is project number' + ' ' + str(pk))
+    return render(request, 'devsearchProjects/single-project.html')
 
 
 
