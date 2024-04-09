@@ -1,28 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Project
+from .forms import ProjectForm
 
-projectsList = [
-    {
-        'id':'1',
-        'title': 'Playbliss',
-        'desc': 'Video game catalog'
 
-    },
-    {
-        'id':'2',
-        'title': 'Playbliss',
-        'desc': 'Video game catalog'
-
-    },
-    {
-        'id':'3',
-        'title': 'Playbliss',
-        'desc': 'Video game catalog'
-
-    }
-    
-]
 
 def projects(request):
     projects = Project.objects.all()
@@ -34,5 +15,8 @@ def project(request, pk):
     return render(request, 'devsearchProjects/single-project.html', {'project': projectObj})
 
 
-
+def createProject(request):
+    form = ProjectForm()
+    context = {'form': form}
+    return render(request, 'devsearchProjects/projects_form.html', context)
 # Create your views here.
